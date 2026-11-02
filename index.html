@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Explore Yusra's calligraphy, paintings, and acrylic painting workshops."
+    >
+    <meta name="theme-color" content="#fbf8fc">
+    <title>Gallery by Yusra — Calligraphy &amp; Painting</title>
+    <link rel="icon" href="assets/gallery-by-yusra-logo.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="Gallery by Yusra, home">
+        <img class="brand-logo" src="assets/gallery-by-yusra-logo.png" alt="Gallery by Yusra">
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span class="visually-hidden">Toggle navigation</span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+        <a href="#artwork">Artwork</a>
+        <a href="#workshops">Workshops</a>
+        <a href="#about">About</a>
+        <a class="nav-contact" href="#contact">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero section-wrap" id="home" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Arabic calligraphy · Quilling · Ink art</p>
+          <h1 id="hero-title">A little colour,<br>a little <em>meaning.</em></h1>
+          <p class="hero-description">
+            A collection of thoughtful marks, playful colour, and creative moments
+            made by hand.
+          </p>
+          <a class="button button-dark" href="#artwork">
+            Explore the collection <span aria-hidden="true">↓</span>
+          </a>
+          <p class="hero-note">Made slowly, with feeling.</p>
+        </div>
+
+        <div class="hero-art" aria-label="Decorative abstract composition in warm colors" role="img">
+          <div class="art-sun"></div>
+          <div class="art-arch"></div>
+          <div class="art-orbit"></div>
+          <div class="art-petal art-petal-one"></div>
+          <div class="art-petal art-petal-two"></div>
+          <div class="art-stroke"></div>
+          <span class="art-caption">a practice in colour<br>&amp; form</span>
+          <span class="art-index">01 / studio notes</span>
+        </div>
+        <span class="hero-side-note" aria-hidden="true">ART, WITH INTENTION</span>
+      </section>
+
+      <section class="artwork-section section-wrap section-space" id="artwork" aria-labelledby="artwork-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">The collection</p>
+            <h2 id="artwork-title">Selected <em>work</em></h2>
+          </div>
+          <p class="section-intro">
+            Pieces made with patience, curiosity, and a love for colour.
+          </p>
+        </div>
+
+        <div class="filter-list" role="group" aria-label="Filter artwork by category">
+          <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">Everything</button>
+          <button class="filter-button" type="button" data-filter="calligraphy" aria-pressed="false">Calligraphy</button>
+          <button class="filter-button" type="button" data-filter="quilling" aria-pressed="false">Quilling</button>
+          <button class="filter-button" type="button" data-filter="ink-art" aria-pressed="false">Ink art</button>
+          <button class="filter-button" type="button" data-filter="painting" aria-pressed="false">Painting</button>
+        </div>
+        <div class="artwork-grid" id="artwork-grid" aria-live="polite"></div>
+      </section>
+
+      <section class="workshop-section section-space" id="workshops" aria-labelledby="workshops-title">
+        <div class="section-wrap workshop-inner">
+          <div class="workshop-copy">
+            <p class="eyebrow">Berlin-based creative art workshops</p>
+            <h2 id="workshops-title">Make art,<br><em>make connections.</em></h2>
+            <p>
+              Hands-on, beginner-friendly workshops designed to inspire
+              creativity, relaxation, and meaningful connections. Everyone
+              creates a piece to take home.
+            </p>
+            <a class="text-link" href="#contact">Book a workshop via DM <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="workshop-feature" aria-hidden="true">
+            <span class="feature-number">Gallery by Yusra · Berlin</span>
+            <span class="feature-word">create<br>explore<br>connect</span>
+            <span class="feature-sun"></span>
+            <span class="feature-caption">Creative art<br>workshops</span>
+          </div>
+          <div class="workshop-history">
+            <h3>Workshop offerings</h3>
+            <div class="workshop-list" id="workshop-list" aria-live="polite"></div>
+          </div>
+          <div class="workshop-benefits">
+            <h3>Why create with us?</h3>
+            <ul class="workshop-benefit-list">
+              <li>Beginner-friendly</li>
+              <li>All materials included</li>
+              <li>A relaxing, creative experience</li>
+              <li>Take your artwork home</li>
+              <li>Great for community and team-building events</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-section section-wrap section-space" id="about" aria-labelledby="about-title">
+        <p class="eyebrow">A note from the artist</p>
+        <div class="about-layout">
+          <h2 id="about-title">Art is a way<br>to <em>pay attention.</em></h2>
+          <div class="about-copy">
+            <p>
+              Gallerybyyusra is a Berlin-based creative art brand offering
+              handmade art, custom orders, and hands-on workshops in Arabic
+              calligraphy, quilling with painting, alcohol ink art, and 3D
+              lemon painting. The workshops are beginner-friendly, include all
+              materials, and invite you to relax, get creative, and take your
+              own artwork home.
+            </p>
+            <a class="text-link" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="section-wrap contact-inner">
+          <p class="eyebrow">For a commission, workshop, or just a hello</p>
+          <h2 id="contact-title">Let’s make room<br>for <em>creativity.</em></h2>
+          <div class="contact-actions" id="contact-actions"></div>
+          <p class="contact-note">Thanks for stopping by <span aria-hidden="true">✳</span></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer section-wrap">
+      <a class="brand footer-brand" href="#home">
+        <img class="brand-logo" src="assets/gallery-by-yusra-logo.png" alt="Gallery by Yusra">
+      </a>
+      <p>Made with care, by Yusra.</p>
+      <a class="back-to-top" href="#home">Back to top ↑</a>
+    </footer>
+  </body>
+</html>
