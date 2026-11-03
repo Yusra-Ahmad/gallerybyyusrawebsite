@@ -56,6 +56,41 @@ export const artworks = [
     alt: "Quilled flowers arranged around a boat on a colorful painted seascape.",
   },
   {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-bird.jpg",
+    alt: "A colorful bird illustration over a flowing purple and blue alcohol ink background.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-turtle.jpg",
+    alt: "A sea turtle painted over a blue and turquoise alcohol ink background.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-blue-abstract.jpg",
+    alt: "Framed abstract alcohol ink art in bright blue, turquoise, pink, and yellow.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-blue-ink.jpg",
+    alt: "A small framed abstract alcohol ink painting in deep blue and turquoise.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-orange-abstract.jpg",
+    alt: "Framed orange and red alcohol ink art with dark details.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-hope-and-love.jpg",
+    alt: "Two framed alcohol ink artworks with the words Hope and Love.",
+  },
+  {
+    category: "ink-art",
+    image: "assets/artwork/ink-art-fish.jpg",
+    alt: "A colorful alcohol ink painting of small fish beside a river.",
+  },
+  {
     category: "painting",
     image: "assets/artwork/painting-floral-bouquet.jpg",
     alt: "A colorful painted bouquet of flowers in a dark vase against a pale background.",

@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=quilling-artwork-set";
+import { artworks, contact, workshops } from "./site-content.js?v=ink-artwork";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const artworkShowMoreButton = document.querySelector("#artwork-show-more");
