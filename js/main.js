@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=calligraphy-image-only-2";
+import { artworks, contact, workshops } from "./site-content.js?v=quilling-artwork";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const workshopList = document.querySelector("#workshop-list");

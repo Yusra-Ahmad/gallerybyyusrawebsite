@@ -25,6 +25,11 @@ export const artworks = [
     image: "assets/artwork/arabic-calligraphy-corner-of-peace.jpg",
     alt: "Black Arabic calligraphy on a warm orange background in a light-colored frame.",
   },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-with-painting-01.jpg",
+    alt: "A framed quilled bouquet of yellow and white paper roses with green leaves.",
+  },
 ];
 
 export const workshops = [
