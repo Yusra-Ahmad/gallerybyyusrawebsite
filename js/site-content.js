@@ -1,12 +1,33 @@
 // Add artwork and workshop offerings here; no database or build step is needed.
 export const artworks = [
-  // {
-  //   title: "Artwork title",
-  //   category: "calligraphy", // "calligraphy" or "painting"
-  //   image: "assets/artwork/your-image.jpg",
-  //   alt: "Describe the artwork for visitors using a screen reader.",
-  //   description: "A short note about the piece.",
-  // },
+  {
+    title: "Alhamdulillah on a Turquoise Canvas",
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-turquoise-canvas.jpg",
+    alt: "A turquoise and deep blue calligraphy canvas displayed outdoors.",
+    description: "Layered Arabic calligraphy in deep blue, black, white, and turquoise.",
+  },
+  {
+    title: "Alhamdulillah Canvas in the Garden",
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-turquoise-canvas-detail.jpg",
+    alt: "A closer view of the turquoise Arabic calligraphy canvas among garden plants.",
+    description: "Another view of the hand-painted calligraphy canvas in its garden setting.",
+  },
+  {
+    title: "Names of Allah in Colour",
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-names-of-allah.jpg",
+    alt: "A colorful Arabic calligraphy painting featuring the names of Allah.",
+    description: "Arabic calligraphy arranged in vivid bands of colour.",
+  },
+  {
+    title: "Allah in Turquoise",
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-video-still.jpg",
+    alt: "Framed Arabic calligraphy displayed against a turquoise background among green plants.",
+    description: "A framed calligraphy artwork with dark lettering on a softly blended turquoise ground.",
+  },
 ];
 
 export const workshops = [

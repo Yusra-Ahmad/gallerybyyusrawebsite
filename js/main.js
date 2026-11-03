@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=workshop-detail-nav";
+import { artworks, contact, workshops } from "./site-content.js?v=arabic-calligraphy-artwork";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const workshopList = document.querySelector("#workshop-list");
