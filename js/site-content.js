@@ -55,6 +55,31 @@ export const artworks = [
     image: "assets/artwork/quilling-IMG_1591-video.jpg",
     alt: "Quilled flowers arranged around a boat on a colorful painted seascape.",
   },
+  {
+    category: "painting",
+    image: "assets/artwork/painting-floral-bouquet.jpg",
+    alt: "A colorful painted bouquet of flowers in a dark vase against a pale background.",
+  },
+  {
+    category: "painting",
+    image: "assets/artwork/painting-daisies-blue.jpg",
+    alt: "White daisies in a blue vase painted on a blue canvas.",
+  },
+  {
+    category: "painting",
+    image: "assets/artwork/painting-pink-roses.jpg",
+    alt: "Pink roses painted on a blue canvas.",
+  },
+  {
+    category: "painting",
+    image: "assets/artwork/painting-evening-lights.jpg",
+    alt: "A twilight sky painting with glowing string lights.",
+  },
+  {
+    category: "painting",
+    image: "assets/artwork/painting-floating-lanterns.jpg",
+    alt: "A night-sky painting of glowing lanterns floating above a city.",
+  },
 ];
 
 export const workshops = [

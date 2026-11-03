@@ -1,6 +1,7 @@
 import { artworks, contact, workshops } from "./site-content.js?v=quilling-artwork-set";
 
 const artworkGrid = document.querySelector("#artwork-grid");
+const artworkShowMoreButton = document.querySelector("#artwork-show-more");
 const workshopList = document.querySelector("#workshop-list");
 const contactActions = document.querySelector("#contact-actions");
 const filterButtons = document.querySelectorAll("[data-filter]");
@@ -17,6 +18,9 @@ const workshopGallery = document.querySelector("#workshop-gallery");
 const workshopGalleryTitle = document.querySelector("#workshop-gallery-title");
 const mainSections = Array.from(main.children);
 const pageTitle = document.title;
+const initialArtworkCount = 4;
+let currentArtworkFilter = "all";
+let isArtworkExpanded = false;
 let wasWorkshopDetail = false;
 
 if (heroVideo instanceof HTMLVideoElement) {
@@ -76,7 +80,25 @@ function createArtworkCard(artwork) {
   return card;
 }
 
+function updateArtworkShowMoreButton(visibleArtworks) {
+  if (!artworkShowMoreButton) {
+    return;
+  }
+
+  const hasMoreArtworks = visibleArtworks.length > initialArtworkCount;
+  artworkShowMoreButton.hidden = !hasMoreArtworks;
+
+  if (!hasMoreArtworks) {
+    return;
+  }
+
+  artworkShowMoreButton.innerHTML = isArtworkExpanded
+    ? "Show less <span aria-hidden=\"true\">↑</span>"
+    : "Show more <span aria-hidden=\"true\">↓</span>";
+}
+
 function renderArtworks(category = "all") {
+  currentArtworkFilter = category;
   const visibleArtworks =
     category === "all" ? artworks : artworks.filter((artwork) => artwork.category === category);
 
@@ -97,10 +119,14 @@ function renderArtworks(category = "all") {
 
     emptyState.append(title, message);
     artworkGrid.append(emptyState);
+    updateArtworkShowMoreButton(visibleArtworks);
     return;
   }
 
-  visibleArtworks.forEach((artwork) => artworkGrid.append(createArtworkCard(artwork)));
+  const itemsToRender = isArtworkExpanded ? visibleArtworks : visibleArtworks.slice(0, initialArtworkCount);
+
+  itemsToRender.forEach((artwork) => artworkGrid.append(createArtworkCard(artwork)));
+  updateArtworkShowMoreButton(visibleArtworks);
 }
 
 function renderWorkshops() {
@@ -221,6 +247,13 @@ function renderContactLinks() {
   }
 }
 
+if (artworkShowMoreButton) {
+  artworkShowMoreButton.addEventListener("click", () => {
+    isArtworkExpanded = !isArtworkExpanded;
+    renderArtworks(currentArtworkFilter);
+  });
+}
+
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
     filterButtons.forEach((filterButton) => {
@@ -229,6 +262,7 @@ filterButtons.forEach((button) => {
       filterButton.setAttribute("aria-pressed", String(isActive));
     });
 
+    isArtworkExpanded = false;
     renderArtworks(button.dataset.filter);
   });
 });

@@ -363,6 +363,16 @@ h2 em {
   column-gap: clamp(1rem, 2.5vw, 2rem);
 }
 
+.artwork-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.artwork-show-more {
+  min-width: 11rem;
+}
+
 .artwork-card {
   min-width: 0;
   width: 100%;
