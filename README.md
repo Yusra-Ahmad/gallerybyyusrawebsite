@@ -1,6 +1,6 @@
 # Gallery by Yusra
 
-A small, static portfolio for calligraphy, painting, and acrylic painting workshops. It uses plain HTML, CSS, and JavaScript, so there is no database, package manager, or build step.
+A small, static portfolio for Arabic calligraphy, quilling, ink art, painting, and creative workshops. It uses plain HTML, CSS, and JavaScript, so there is no database, package manager, or build step.
 
 ## Run locally
 
@@ -8,14 +8,14 @@ Run `python3 -m http.server` from the repository root and visit `http://localhos
 
 ## Add artwork or workshop details
 
-1. Add image files under `assets/artwork/`.
+1. Add artwork images under `assets/artwork/` and workshop images under `assets/workshops/`.
 2. Add entries to the `artworks` array in `js/site-content.js`. Each entry has a title, category (`calligraphy`, `quilling`, `ink-art`, or `painting`), image path, descriptive alt text, and a short description.
-3. Add or edit workshop offerings in the `workshops` array in the same file.
+3. Add or edit workshop offerings in the `workshops` array in the same file. Each offering has a unique `slug`, title, image path, descriptive alt text, a short description, and a `gallery` array. Gallery entries use `{ image, alt }` and appear on the workshop detail page, which opens when a visitor selects an offering. Set the optional `galleryTitle` to label an event gallery.
 4. Set `contact.email` and/or `contact.instagramUrl` there to show contact buttons.
 5. Commit and push your changes to `main`.
 
 Use optimized image files to keep the portfolio quick to load. Keep image paths relative to the repository root.
-The supplied transparent logo is `assets/gallery-by-yusra-logo.png` and is used in the header, footer, and browser tab.
+The supplied transparent logo is `assets/gallery-by-yusra-logo.png` and is used in the header, footer, and browser tab. The homepage uses `assets/yusra-art-stall.mp4` with `assets/yusra-art-stall.jpg` as its poster and reduced-motion fallback.
 
 ## Publish with GitHub Pages
 

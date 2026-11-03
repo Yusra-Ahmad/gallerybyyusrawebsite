@@ -11,7 +11,7 @@
     <title>Gallery by Yusra — Calligraphy &amp; Painting</title>
     <link rel="icon" href="assets/gallery-by-yusra-logo.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js?v=workshop-detail-nav"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -52,16 +52,28 @@
           </a>
           <p class="hero-note">Made slowly, with feeling.</p>
         </div>
-
-        <div class="hero-art" aria-label="Decorative abstract composition in warm colors" role="img">
-          <div class="art-sun"></div>
-          <div class="art-arch"></div>
-          <div class="art-orbit"></div>
-          <div class="art-petal art-petal-one"></div>
-          <div class="art-petal art-petal-two"></div>
-          <div class="art-stroke"></div>
-          <span class="art-caption">a practice in colour<br>&amp; form</span>
-          <span class="art-index">01 / studio notes</span>
+        <div class="hero-art">
+          <video
+            class="hero-art-video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            poster="assets/yusra-art-stall.jpg"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            <source src="assets/yusra-art-stall.mp4" type="video/mp4">
+          </video>
+          <img
+            class="hero-art-fallback"
+            src="assets/yusra-art-stall.jpg"
+            alt="Yusra at her art stall in Berlin, with paintings and handmade artwork on display."
+            width="768"
+            height="1365"
+            fetchpriority="high"
+          >
         </div>
         <span class="hero-side-note" aria-hidden="true">ART, WITH INTENTION</span>
       </section>
@@ -118,6 +130,45 @@
               <li>Take your artwork home</li>
               <li>Great for community and team-building events</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="workshop-detail-section section-space" id="workshop-detail" aria-labelledby="workshop-detail-title" hidden>
+        <div class="section-wrap">
+          <a class="text-link workshop-detail-back" href="#workshops"><span aria-hidden="true">←</span> All workshops</a>
+          <div class="workshop-detail-heading">
+            <p class="eyebrow">A creative workshop in Berlin</p>
+            <h1 id="workshop-detail-title" tabindex="-1"></h1>
+            <p class="workshop-detail-description" id="workshop-detail-description"></p>
+          </div>
+
+          <div class="workshop-detail-layout">
+            <img class="workshop-detail-image" id="workshop-detail-image" alt="">
+            <div class="workshop-detail-copy">
+              <h2>Workshop at a glance</h2>
+              <dl class="workshop-facts">
+                <div><dt>Duration</dt><dd>90–120 minutes</dd></div>
+                <div><dt>Group size</dt><dd>8–15 participants</dd></div>
+                <div><dt>Experience</dt><dd>Beginner-friendly</dd></div>
+                <div><dt>Materials</dt><dd>All materials included</dd></div>
+              </dl>
+
+              <h2>What to expect</h2>
+              <ol class="workshop-steps">
+                <li><span>01</span><div><h3>Introduction &amp; demonstration</h3><p>A brief introduction to the technique and materials.</p></div></li>
+                <li><span>02</span><div><h3>Guided creation</h3><p>Follow step-by-step guidance as you begin your artwork.</p></div></li>
+                <li><span>03</span><div><h3>Make it your own</h3><p>Personalise your piece and explore your own ideas.</p></div></li>
+                <li><span>04</span><div><h3>Finish &amp; take home</h3><p>Complete your artwork and take it home with you.</p></div></li>
+              </ol>
+              <a class="button button-dark workshop-detail-booking" id="workshop-detail-booking" href="https://www.instagram.com/gallery.by.yusra/" target="_blank" rel="noopener noreferrer">Ask about this workshop <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+
+          <div class="workshop-gallery-section">
+            <p class="eyebrow">From the studio</p>
+            <h2 id="workshop-gallery-title">Past workshop moments</h2>
+            <div class="workshop-gallery" id="workshop-gallery"></div>
           </div>
         </div>
       </section>
