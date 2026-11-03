@@ -30,6 +30,31 @@ export const artworks = [
     image: "assets/artwork/quilling-with-painting-01.jpg",
     alt: "A framed quilled bouquet of yellow and white paper roses with green leaves.",
   },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-IMG_5595.jpg",
+    alt: "A framed quilled flower cart against a painted turquoise background.",
+  },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-IMG_5599.jpg",
+    alt: "A framed quilled arrangement of colorful flowers on a dark background.",
+  },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-IMG_5608.jpg",
+    alt: "A quilling and painting artwork showing colorful flower arrangements on shelves.",
+  },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-IMG_5703.jpg",
+    alt: "A framed painting of a domed building decorated with colorful quilled flowers.",
+  },
+  {
+    category: "quilling",
+    image: "assets/artwork/quilling-IMG_1591-video.jpg",
+    alt: "Quilled flowers arranged around a boat on a colorful painted seascape.",
+  },
 ];
 
 export const workshops = [

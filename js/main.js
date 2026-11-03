@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=quilling-artwork";
+import { artworks, contact, workshops } from "./site-content.js?v=quilling-artwork-set";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const workshopList = document.querySelector("#workshop-list");
