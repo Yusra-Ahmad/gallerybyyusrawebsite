@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=arabic-calligraphy-artwork";
+import { artworks, contact, workshops } from "./site-content.js?v=calligraphy-image-only";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const workshopList = document.querySelector("#workshop-list");
@@ -59,18 +59,20 @@ function createArtworkCard(artwork) {
   image.loading = "lazy";
   imageWrap.append(image);
 
-  const category = document.createElement("span");
-  category.className = "artwork-category";
-  category.textContent = artwork.category;
-  imageWrap.append(category);
+  card.append(imageWrap);
 
-  const title = document.createElement("h3");
-  title.textContent = artwork.title;
+  if (artwork.title) {
+    const title = document.createElement("h3");
+    title.textContent = artwork.title;
+    card.append(title);
+  }
 
-  const description = document.createElement("p");
-  description.textContent = artwork.description;
+  if (artwork.description) {
+    const description = document.createElement("p");
+    description.textContent = artwork.description;
+    card.append(description);
+  }
 
-  card.append(imageWrap, title, description);
   return card;
 }
 
