@@ -9,7 +9,7 @@ Run `python3 -m http.server` from the repository root and visit `http://localhos
 ## Add artwork or workshop details
 
 1. Add artwork images under `assets/artwork/` and workshop images under `assets/workshops/`.
-2. Add entries to the `artworks` array in `js/site-content.js`. Each entry has a title, category (`calligraphy`, `quilling`, `ink-art`, or `painting`), image path, descriptive alt text, and a short description.
+2. Add entries to the `artworks` array in `js/site-content.js`. Each entry has a category (`calligraphy`, `quilling`, `ink-art`, or `painting`), image path, and descriptive alt text. The title and description are optional; omit them to show an image without a caption.
 3. Add or edit workshop offerings in the `workshops` array in the same file. Each offering has a unique `slug`, title, image path, descriptive alt text, a short description, and a `gallery` array. Gallery entries use `{ image, alt }` and appear on the workshop detail page, which opens when a visitor selects an offering. Set the optional `galleryTitle` to label an event gallery.
 4. Set `contact.email` and/or `contact.instagramUrl` there to show contact buttons.
 5. Commit and push your changes to `main`.

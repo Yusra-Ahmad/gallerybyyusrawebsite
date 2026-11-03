@@ -15,6 +15,16 @@ export const artworks = [
     image: "assets/artwork/arabic-calligraphy-video-still.jpg",
     alt: "Framed Arabic calligraphy displayed against a turquoise background among green plants.",
   },
+  {
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-framed-turquoise.jpg",
+    alt: "Framed Arabic calligraphy displayed beside flowers and a decorative glass bottle.",
+  },
+  {
+    category: "calligraphy",
+    image: "assets/artwork/arabic-calligraphy-corner-of-peace.jpg",
+    alt: "Black Arabic calligraphy on a warm orange background in a light-colored frame.",
+  },
 ];
 
 export const workshops = [
