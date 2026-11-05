@@ -17,6 +17,10 @@ Run `python3 -m http.server` from the repository root and visit `http://localhos
 Use optimized image files to keep the portfolio quick to load. Keep image paths relative to the repository root.
 The supplied transparent logo is `assets/gallery-by-yusra-logo.png` and is used in the header, footer, and browser tab. The homepage uses `assets/yusra-art-stall.mp4` with `assets/yusra-art-stall.jpg` as its poster and reduced-motion fallback.
 
+## Social sharing preview
+
+The page uses Open Graph and Twitter Card metadata in `index.html` to show `assets/social-preview.jpg` when the site is shared. Keep this image at 1200 × 630 pixels and update its absolute URL in the metadata if the domain changes.
+
 ## Publish with GitHub Pages
 
 The workflow in `.github/workflows/deploy.yml` deploys the site whenever changes are pushed to `main`.
