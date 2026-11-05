@@ -1,4 +1,4 @@
-import { artworks, contact, workshops } from "./site-content.js?v=workshop-signup";
+import { artworks, contact, workshops } from "./site-content.js?v=artwork-sales-cards";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const artworkShowMoreButton = document.querySelector("#artwork-show-more");
@@ -57,6 +57,8 @@ function createArtworkCard(artwork) {
   const card = document.createElement("article");
   card.className = "artwork-card";
   card.dataset.category = artwork.category;
+  const status = artwork.status || "enquire";
+  card.dataset.status = status;
 
   const imageWrap = document.createElement("button");
   imageWrap.className = "artwork-image-wrap";
@@ -64,18 +66,64 @@ function createArtworkCard(artwork) {
   imageWrap.setAttribute("aria-label", `View ${artwork.title || artwork.alt} full size`);
   imageWrap.addEventListener("click", () => openArtworkLightbox(artwork));
 
+  const statusBadge = document.createElement("span");
+  statusBadge.className = "artwork-status";
+  statusBadge.textContent =
+    status === "available" ? "Available" : status === "sold" ? "Sold" : "Ask about availability";
+
   const image = document.createElement("img");
   image.className = "artwork-image";
   image.src = artwork.image;
   image.alt = artwork.alt;
   image.loading = "lazy";
-  imageWrap.append(image);
+  imageWrap.append(image, statusBadge);
 
   card.append(imageWrap);
 
-  const caption = document.createElement("h3");
-  caption.textContent = artwork.title || artwork.description || "";
-  card.append(caption);
+  const details = document.createElement("div");
+  details.className = "artwork-card-details";
+
+  const category = document.createElement("p");
+  category.className = "artwork-category-label";
+  category.textContent = artwork.category.replaceAll("-", " ");
+
+  const title = document.createElement("h3");
+  title.textContent = artwork.title || artwork.description || "";
+
+  const price = document.createElement("p");
+  price.className = "artwork-price";
+  price.textContent =
+    typeof artwork.price === "number"
+      ? new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(artwork.price)
+      : "Price on request";
+
+  details.append(category, title, price);
+
+  const metadata = [artwork.medium, artwork.size].filter(Boolean);
+  if (metadata.length > 0) {
+    const meta = document.createElement("p");
+    meta.className = "artwork-meta";
+    meta.textContent = metadata.join(" · ");
+    details.append(meta);
+  }
+
+  if (status !== "sold") {
+    const inquiryLink = document.createElement("a");
+    inquiryLink.className = "artwork-inquiry";
+    inquiryLink.href = contact.instagramUrl || "#contact";
+    if (contact.instagramUrl) {
+      inquiryLink.target = "_blank";
+      inquiryLink.rel = "noopener noreferrer";
+    }
+    inquiryLink.textContent = status === "available" ? "Ask to buy" : "Ask about this piece";
+    inquiryLink.setAttribute(
+      "aria-label",
+      `${status === "available" ? "Ask to buy" : "Ask about"} ${title.textContent}`,
+    );
+    details.append(inquiryLink);
+  }
+
+  card.append(details);
 
   return card;
 }
