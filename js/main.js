@@ -1,7 +1,11 @@
-import { artworks, contact, workshops } from "./site-content.js?v=ink-artwork";
+import { artworks, contact, workshops } from "./site-content.js?v=workshop-signup";
 
 const artworkGrid = document.querySelector("#artwork-grid");
 const artworkShowMoreButton = document.querySelector("#artwork-show-more");
+const artworkLightbox = document.querySelector("#artwork-lightbox");
+const artworkLightboxImage = document.querySelector("#artwork-lightbox-image");
+const artworkLightboxCaption = document.querySelector("#artwork-lightbox-caption");
+const artworkLightboxClose = document.querySelector("#artwork-lightbox-close");
 const workshopList = document.querySelector("#workshop-list");
 const contactActions = document.querySelector("#contact-actions");
 const filterButtons = document.querySelectorAll("[data-filter]");
@@ -21,6 +25,7 @@ const pageTitle = document.title;
 const initialArtworkCount = 4;
 let currentArtworkFilter = "all";
 let isArtworkExpanded = false;
+let artworkLightboxTrigger = null;
 let wasWorkshopDetail = false;
 
 if (heroVideo instanceof HTMLVideoElement) {
@@ -53,8 +58,11 @@ function createArtworkCard(artwork) {
   card.className = "artwork-card";
   card.dataset.category = artwork.category;
 
-  const imageWrap = document.createElement("div");
+  const imageWrap = document.createElement("button");
   imageWrap.className = "artwork-image-wrap";
+  imageWrap.type = "button";
+  imageWrap.setAttribute("aria-label", `View ${artwork.title || artwork.alt} full size`);
+  imageWrap.addEventListener("click", () => openArtworkLightbox(artwork));
 
   const image = document.createElement("img");
   image.className = "artwork-image";
@@ -65,19 +73,27 @@ function createArtworkCard(artwork) {
 
   card.append(imageWrap);
 
-  if (artwork.title) {
-    const title = document.createElement("h3");
-    title.textContent = artwork.title;
-    card.append(title);
-  }
-
-  if (artwork.description) {
-    const description = document.createElement("p");
-    description.textContent = artwork.description;
-    card.append(description);
-  }
+  const caption = document.createElement("h3");
+  caption.textContent = artwork.title || artwork.description || "";
+  card.append(caption);
 
   return card;
+}
+
+function openArtworkLightbox(artwork) {
+  artworkLightboxTrigger = document.activeElement;
+  artworkLightboxImage.src = artwork.image;
+  artworkLightboxImage.alt = artwork.alt;
+  artworkLightboxCaption.textContent = artwork.title || artwork.description || artwork.alt;
+  artworkLightbox.showModal();
+  artworkLightboxClose.focus();
+}
+
+function closeArtworkLightbox() {
+  artworkLightbox.close();
+  if (artworkLightboxTrigger instanceof HTMLElement && artworkLightboxTrigger.isConnected) {
+    artworkLightboxTrigger.focus();
+  }
 }
 
 function updateArtworkShowMoreButton(visibleArtworks) {
@@ -99,8 +115,15 @@ function updateArtworkShowMoreButton(visibleArtworks) {
 
 function renderArtworks(category = "all") {
   currentArtworkFilter = category;
-  const visibleArtworks =
+  let visibleArtworks =
     category === "all" ? artworks : artworks.filter((artwork) => artwork.category === category);
+
+  if (category === "all") {
+    visibleArtworks = [
+      ...visibleArtworks.filter((artwork) => artwork.featured),
+      ...visibleArtworks.filter((artwork) => !artwork.featured),
+    ];
+  }
 
   artworkGrid.replaceChildren();
 
@@ -217,9 +240,10 @@ function renderWorkshopDetail() {
   workshopDetailDescription.textContent = workshop.description;
   workshopDetailImage.src = workshop.image;
   workshopDetailImage.alt = workshop.alt;
-  workshopDetailBooking.href = contact.instagramUrl || "#contact";
-  workshopDetailBooking.target = contact.instagramUrl ? "_blank" : "";
-  workshopDetailBooking.rel = contact.instagramUrl ? "noopener noreferrer" : "";
+  workshopDetailBooking.href = "https://forms.gle/DNwT2agG7HuWeEau7";
+  workshopDetailBooking.target = "_blank";
+  workshopDetailBooking.rel = "noopener noreferrer";
+  workshopDetailBooking.textContent = "Sign up for this workshop ↗";
   renderWorkshopGallery(workshop);
 
   document.title = `${workshop.title} Workshop — Gallery by Yusra`;
@@ -242,7 +266,7 @@ function renderContactLinks() {
     instagramLink.href = contact.instagramUrl;
     instagramLink.target = "_blank";
     instagramLink.rel = "noopener noreferrer";
-    instagramLink.textContent = "Book a workshop via DM";
+    instagramLink.textContent = "Ask about a workshop on Instagram";
     contactActions.append(instagramLink);
   }
 }
@@ -253,6 +277,13 @@ if (artworkShowMoreButton) {
     renderArtworks(currentArtworkFilter);
   });
 }
+
+artworkLightboxClose.addEventListener("click", closeArtworkLightbox);
+artworkLightbox.addEventListener("click", (event) => {
+  if (event.target === artworkLightbox) {
+    closeArtworkLightbox();
+  }
+});
 
 filterButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -281,7 +312,17 @@ navigation.addEventListener("click", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && navigation.classList.contains("is-open")) {
+  if (event.key !== "Escape") {
+    return;
+  }
+
+  if (artworkLightbox.open) {
+    event.preventDefault();
+    closeArtworkLightbox();
+    return;
+  }
+
+  if (navigation.classList.contains("is-open")) {
     menuToggle.setAttribute("aria-expanded", "false");
     navigation.classList.remove("is-open");
     menuToggle.focus();

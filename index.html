@@ -10,8 +10,8 @@
     <meta name="theme-color" content="#fbf8fc">
     <title>Gallery by Yusra — Calligraphy &amp; Painting</title>
     <link rel="icon" href="assets/gallery-by-yusra-logo.png" type="image/png">
-    <link rel="stylesheet" href="css/styles.css?v=artwork-cards">
-    <script type="module" src="js/main.js?v=ink-artwork"></script>
+    <link rel="stylesheet" href="css/styles.css?v=workshop-card-art">
+    <script type="module" src="js/main.js?v=workshop-signup"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -97,6 +97,11 @@
           <button class="filter-button" type="button" data-filter="painting" aria-pressed="false">Painting</button>
         </div>
         <div class="artwork-grid" id="artwork-grid" aria-live="polite"></div>
+        <dialog class="artwork-lightbox" id="artwork-lightbox" aria-label="Artwork preview">
+          <button class="artwork-lightbox-close" id="artwork-lightbox-close" type="button" aria-label="Close artwork preview">Close <span aria-hidden="true">×</span></button>
+          <img class="artwork-lightbox-image" id="artwork-lightbox-image" alt="">
+          <p class="artwork-lightbox-caption" id="artwork-lightbox-caption"></p>
+        </dialog>
         <div class="artwork-actions">
           <button class="button button-dark artwork-show-more" id="artwork-show-more" type="button" hidden>
             Show more <span aria-hidden="true">↓</span>
@@ -114,14 +119,15 @@
               creativity, relaxation, and meaningful connections. Everyone
               creates a piece to take home.
             </p>
-            <a class="text-link" href="#contact">Book a workshop via DM <span aria-hidden="true">↗</span></a>
+            <a class="button workshop-signup-button" href="https://forms.gle/DNwT2agG7HuWeEau7" target="_blank" rel="noopener noreferrer">Sign up for a workshop <span aria-hidden="true">↗</span></a>
+            <p class="workshop-booking-note">Planning a private group or team event? <a class="text-link" href="https://www.instagram.com/gallery.by.yusra/" target="_blank" rel="noopener noreferrer">Message on Instagram <span aria-hidden="true">↗</span></a></p>
           </div>
-          <div class="workshop-feature" aria-hidden="true">
+          <a class="workshop-feature" href="https://forms.gle/DNwT2agG7HuWeEau7" target="_blank" rel="noopener noreferrer" aria-label="Sign up for a creative art workshop using Google Forms (opens in a new tab)">
             <span class="feature-number">Gallery by Yusra · Berlin</span>
             <span class="feature-word">create<br>explore<br>connect</span>
             <span class="feature-sun"></span>
             <span class="feature-caption">Creative art<br>workshops</span>
-          </div>
+          </a>
           <div class="workshop-history">
             <h3>Workshop offerings</h3>
             <div class="workshop-list" id="workshop-list" aria-live="polite"></div>
@@ -166,7 +172,7 @@
                 <li><span>03</span><div><h3>Make it your own</h3><p>Personalise your piece and explore your own ideas.</p></div></li>
                 <li><span>04</span><div><h3>Finish &amp; take home</h3><p>Complete your artwork and take it home with you.</p></div></li>
               </ol>
-              <a class="button button-dark workshop-detail-booking" id="workshop-detail-booking" href="https://www.instagram.com/gallery.by.yusra/" target="_blank" rel="noopener noreferrer">Ask about this workshop <span aria-hidden="true">↗</span></a>
+              <a class="button button-dark workshop-detail-booking" id="workshop-detail-booking" href="https://www.instagram.com/gallery.by.yusra/" target="_blank" rel="noopener noreferrer">Ask about this workshop on Instagram <span aria-hidden="true">↗</span></a>
             </div>
           </div>
 
@@ -184,12 +190,10 @@
           <h2 id="about-title">Art is a way<br>to <em>pay attention.</em></h2>
           <div class="about-copy">
             <p>
-              Gallerybyyusra is a Berlin-based creative art brand offering
-              handmade art, custom orders, and hands-on workshops in Arabic
-              calligraphy, quilling with painting, alcohol ink art, and 3D
-              lemon painting. The workshops are beginner-friendly, include all
-              materials, and invite you to relax, get creative, and take your
-              own artwork home.
+              I’m Yusra, a Berlin-based artist creating handmade work in Arabic
+              calligraphy, quilling, painting, and alcohol ink. Through Gallery
+              by Yusra, I also host beginner-friendly workshops where people
+              can slow down, try something new, and take their artwork home.
             </p>
             <a class="text-link" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
           </div>
