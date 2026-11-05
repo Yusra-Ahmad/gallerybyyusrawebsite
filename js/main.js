@@ -1,7 +1,9 @@
-import { artworks, contact, workshops } from "./site-content.js?v=artwork-sales-cards";
+import { artworks, contact, workshops } from "./site-content.js?v=artwork-pagination";
 
 const artworkGrid = document.querySelector("#artwork-grid");
+const artworkPreviousButton = document.querySelector("#artwork-previous");
 const artworkShowMoreButton = document.querySelector("#artwork-show-more");
+const artworkPageStatus = document.querySelector("#artwork-page-status");
 const artworkLightbox = document.querySelector("#artwork-lightbox");
 const artworkLightboxImage = document.querySelector("#artwork-lightbox-image");
 const artworkLightboxCaption = document.querySelector("#artwork-lightbox-caption");
@@ -22,9 +24,9 @@ const workshopGallery = document.querySelector("#workshop-gallery");
 const workshopGalleryTitle = document.querySelector("#workshop-gallery-title");
 const mainSections = Array.from(main.children);
 const pageTitle = document.title;
-const initialArtworkCount = 4;
+const artworksPerPage = 3;
 let currentArtworkFilter = "all";
-let isArtworkExpanded = false;
+let currentArtworkPage = 0;
 let artworkLightboxTrigger = null;
 let wasWorkshopDetail = false;
 
@@ -93,7 +95,9 @@ function createArtworkCard(artwork) {
   const price = document.createElement("p");
   price.className = "artwork-price";
   price.textContent =
-    typeof artwork.price === "number"
+    status === "sold"
+      ? "Custom order · price on request"
+      : typeof artwork.price === "number"
       ? new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(artwork.price)
       : "Price on request";
 
@@ -107,21 +111,24 @@ function createArtworkCard(artwork) {
     details.append(meta);
   }
 
-  if (status !== "sold") {
-    const inquiryLink = document.createElement("a");
-    inquiryLink.className = "artwork-inquiry";
-    inquiryLink.href = contact.instagramUrl || "#contact";
-    if (contact.instagramUrl) {
-      inquiryLink.target = "_blank";
-      inquiryLink.rel = "noopener noreferrer";
-    }
-    inquiryLink.textContent = status === "available" ? "Ask to buy" : "Ask about this piece";
-    inquiryLink.setAttribute(
-      "aria-label",
-      `${status === "available" ? "Ask to buy" : "Ask about"} ${title.textContent}`,
-    );
-    details.append(inquiryLink);
+  const inquiryLink = document.createElement("a");
+  inquiryLink.className = "artwork-inquiry";
+  inquiryLink.href = contact.instagramUrl || "#contact";
+  if (contact.instagramUrl) {
+    inquiryLink.target = "_blank";
+    inquiryLink.rel = "noopener noreferrer";
   }
+  inquiryLink.textContent =
+    status === "sold"
+      ? "Order a similar piece"
+      : status === "available"
+        ? "Ask to buy"
+        : "Ask about this piece";
+  inquiryLink.setAttribute(
+    "aria-label",
+    `${status === "sold" ? "Order a similar piece like" : status === "available" ? "Ask to buy" : "Ask about"} ${title.textContent}`,
+  );
+  details.append(inquiryLink);
 
   card.append(details);
 
@@ -144,21 +151,16 @@ function closeArtworkLightbox() {
   }
 }
 
-function updateArtworkShowMoreButton(visibleArtworks) {
-  if (!artworkShowMoreButton) {
-    return;
-  }
+function updateArtworkPagination(visibleArtworks) {
+  const pageCount = Math.ceil(visibleArtworks.length / artworksPerPage);
+  const hasMultiplePages = pageCount > 1;
 
-  const hasMoreArtworks = visibleArtworks.length > initialArtworkCount;
-  artworkShowMoreButton.hidden = !hasMoreArtworks;
-
-  if (!hasMoreArtworks) {
-    return;
-  }
-
-  artworkShowMoreButton.innerHTML = isArtworkExpanded
-    ? "Show less <span aria-hidden=\"true\">↑</span>"
-    : "Show more <span aria-hidden=\"true\">↓</span>";
+  artworkPreviousButton.hidden = !hasMultiplePages || currentArtworkPage === 0;
+  artworkShowMoreButton.hidden = !hasMultiplePages || currentArtworkPage === pageCount - 1;
+  artworkPageStatus.hidden = !hasMultiplePages;
+  artworkPageStatus.textContent = hasMultiplePages
+    ? `Page ${currentArtworkPage + 1} of ${pageCount}`
+    : "";
 }
 
 function renderArtworks(category = "all") {
@@ -173,6 +175,8 @@ function renderArtworks(category = "all") {
     ];
   }
 
+  const pageCount = Math.ceil(visibleArtworks.length / artworksPerPage);
+  currentArtworkPage = Math.min(currentArtworkPage, Math.max(pageCount - 1, 0));
   artworkGrid.replaceChildren();
 
   if (visibleArtworks.length === 0) {
@@ -190,14 +194,15 @@ function renderArtworks(category = "all") {
 
     emptyState.append(title, message);
     artworkGrid.append(emptyState);
-    updateArtworkShowMoreButton(visibleArtworks);
+    updateArtworkPagination(visibleArtworks);
     return;
   }
 
-  const itemsToRender = isArtworkExpanded ? visibleArtworks : visibleArtworks.slice(0, initialArtworkCount);
+  const start = currentArtworkPage * artworksPerPage;
+  const itemsToRender = visibleArtworks.slice(start, start + artworksPerPage);
 
   itemsToRender.forEach((artwork) => artworkGrid.append(createArtworkCard(artwork)));
-  updateArtworkShowMoreButton(visibleArtworks);
+  updateArtworkPagination(visibleArtworks);
 }
 
 function renderWorkshops() {
@@ -321,8 +326,17 @@ function renderContactLinks() {
 
 if (artworkShowMoreButton) {
   artworkShowMoreButton.addEventListener("click", () => {
-    isArtworkExpanded = !isArtworkExpanded;
+    currentArtworkPage += 1;
     renderArtworks(currentArtworkFilter);
+    document.querySelector("#artwork-title").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+}
+
+if (artworkPreviousButton) {
+  artworkPreviousButton.addEventListener("click", () => {
+    currentArtworkPage -= 1;
+    renderArtworks(currentArtworkFilter);
+    document.querySelector("#artwork-title").scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
@@ -341,7 +355,7 @@ filterButtons.forEach((button) => {
       filterButton.setAttribute("aria-pressed", String(isActive));
     });
 
-    isArtworkExpanded = false;
+    currentArtworkPage = 0;
     renderArtworks(button.dataset.filter);
   });
 });

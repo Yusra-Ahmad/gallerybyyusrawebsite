@@ -131,12 +131,14 @@ export const artworks = [
   },
   {
     category: "ink-art",
+    status: "sold",
     image: "assets/artwork/ink-art-blue-abstract.jpg",
     alt: "Framed abstract alcohol ink art in bright blue, turquoise, pink, and yellow.",
     title: "Blue, Turquoise & Pink",
   },
   {
     category: "ink-art",
+    status: "sold",
     image: "assets/artwork/ink-art-blue-ink.jpg",
     alt: "A small framed abstract alcohol ink painting in deep blue and turquoise.",
     title: "Deep Blue Flow",
@@ -180,12 +182,14 @@ export const artworks = [
   },
   {
     category: "painting",
+    status: "sold",
     image: "assets/artwork/painting-evening-lights.jpg",
     alt: "A twilight sky painting with glowing string lights.",
     title: "Evening Lights",
   },
   {
     category: "painting",
+    status: "sold",
     image: "assets/artwork/painting-floating-lanterns.jpg",
     alt: "A night-sky painting of glowing lanterns floating above a city.",
     title: "Floating Lanterns",

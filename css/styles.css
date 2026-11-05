@@ -366,12 +366,26 @@ h2 em {
 
 .artwork-actions {
   display: flex;
-  justify-content: center;
-  margin-top: 1.25rem;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .artwork-show-more {
-  min-width: 11rem;
+  min-width: 9rem;
+  margin-left: auto;
+}
+
+.artwork-page-button {
+  min-width: 9rem;
+}
+
+.artwork-page-status {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
 }
 
 .artwork-card {
@@ -427,6 +441,16 @@ h2 em {
   filter: saturate(0.72);
 }
 
+.artwork-card[data-status="sold"] {
+  border-color: #49434d;
+  background: #39343d;
+}
+
+.artwork-card[data-status="sold"] .artwork-card-details {
+  background: #39343d;
+  color: #fbf8fc;
+}
+
 .artwork-status {
   position: absolute;
   top: 0.85rem;
@@ -447,8 +471,8 @@ h2 em {
 }
 
 .artwork-card[data-status="sold"] .artwork-status {
-  background: #342b35;
-  color: #fff;
+  background: #e5e0e8;
+  color: #302a34;
 }
 
 .artwork-card-details {
@@ -463,11 +487,21 @@ h2 em {
   text-transform: uppercase;
 }
 
+.artwork-card[data-status="sold"] .artwork-category-label,
+.artwork-card[data-status="sold"] .artwork-meta {
+  color: #c9c1ce;
+}
+
 .artwork-card h3 {
   margin: 0;
   font-family: var(--serif);
   font-size: clamp(1.05rem, 1.4vw, 1.35rem);
   font-weight: 400;
+}
+
+.artwork-card[data-status="sold"] h3,
+.artwork-card[data-status="sold"] .artwork-price {
+  color: #fbf8fc;
 }
 
 .artwork-card .artwork-price {
@@ -501,6 +535,16 @@ h2 em {
 .artwork-inquiry:hover {
   background: var(--ink);
   color: var(--paper);
+}
+
+.artwork-card[data-status="sold"] .artwork-inquiry {
+  border-color: #e5dce9;
+  color: #fbf8fc;
+}
+
+.artwork-card[data-status="sold"] .artwork-inquiry:hover {
+  background: #fbf8fc;
+  color: #39343d;
 }
 
 .artwork-lightbox {
