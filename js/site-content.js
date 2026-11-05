@@ -211,7 +211,6 @@ export const workshops = [
     image: "assets/workshops/alcohol-ink-art.jpg",
     alt: "Framed abstract alcohol ink artwork in blue, purple, and white.",
     description: "Experiment with fluid colours and create expressive abstract artwork.",
-    galleryTitle: "Past Alcohol Ink Workshops",
     gallery: [
       {
         image: "assets/workshops/alcohol-ink-art/wework-session-01.jpg",
@@ -273,7 +272,24 @@ export const workshops = [
     image: "assets/workshops/quilling-with-painting.jpg",
     alt: "A colorful painted seascape decorated with raised paper-quilled flowers.",
     description: "Combine colourful paper quilling with painting techniques.",
-    gallery: [],
+    gallery: [
+      {
+        image: "assets/workshops/quilling-with-painting/quilling-workshop-display.jpg",
+        alt: "Finished painted and quilled artworks displayed at a past workshop.",
+      },
+      {
+        image: "assets/workshops/quilling-with-painting/quilling-workshop-sun.jpg",
+        alt: "A participant adds quilled paper details to a bright sun painting.",
+      },
+      {
+        image: "assets/workshops/quilling-with-painting/quilling-workshop-activity.jpg",
+        alt: "Workshop participants work with colorful paper strips and quilling tools.",
+      },
+      {
+        image: "assets/workshops/quilling-with-painting/quilling-workshop-painting.jpg",
+        alt: "A participant paints a canvas during a quilling and painting workshop.",
+      },
+    ],
   },
   {
     slug: "3d-lemon-painting",
